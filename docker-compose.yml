@@ -1,4 +1,13 @@
 services:
+  app:
+    restart: always
+    image: sokol111/educational-go:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
   db:
     restart: always
     image: postgres:latest
