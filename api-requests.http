@@ -1,0 +1,30 @@
+GET http://localhost:8080/user/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/user/list
+Accept: application/json
+
+###
+
+POST http://localhost:8080/user/create
+Content-Type: application/json
+
+{
+  "name": "123",
+  "enabled": true
+}
+###
+
+PUT http://localhost:8080/user/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "version": 4,
+  "name": "ASdasfdsfgdfgdfg",
+  "enabled": false
+}
+
+###
