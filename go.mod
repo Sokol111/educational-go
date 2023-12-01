@@ -1,6 +1,6 @@
 module github.com/Sokol111/educational-go
 
-go 1.20
+go 1.21.4
 
 require (
 	github.com/gin-gonic/gin v1.9.1
