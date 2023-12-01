@@ -14,10 +14,6 @@ type createUserRequest struct {
 	Enabled bool   `json:"enabled"`
 }
 
-func (r *createUserRequest) validate() error {
-	return nil
-}
-
 type updateUserRequest struct {
 	Id      int64  `json:"id" binding:"required"`
 	Version int32  `json:"version" binding:"required"`
