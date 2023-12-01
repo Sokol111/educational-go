@@ -2,14 +2,14 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"log"
+	"github.com/rs/zerolog/log"
 )
 
 func errorHandler(c *gin.Context) {
 	c.Next()
 
 	for _, err := range c.Errors {
-		log.Println(err)
+		log.Error().Msg(err.Error())
 	}
 
 	if len(c.Errors) > 0 {

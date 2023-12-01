@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog/log"
 	"golang.org/x/sync/errgroup"
-	"log"
 	"net"
 	"net/http"
 	"strconv"
@@ -42,7 +42,7 @@ func (s *Server) Start() {
 	g, gCtx := errgroup.WithContext(s.baseContext)
 
 	g.Go(func() error {
-		log.Println("Listening and serving HTTP on", s.httpServer.Addr)
+		log.Info().Msgf("Listening and serving HTTP on %s", s.httpServer.Addr)
 		return s.httpServer.ListenAndServe()
 	})
 
@@ -52,6 +52,6 @@ func (s *Server) Start() {
 	})
 
 	if err := g.Wait(); err != nil {
-		log.Printf("exit reason: %s ", err)
+		log.Error().Msgf("exit reason: %s", err)
 	}
 }

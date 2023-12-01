@@ -1,8 +1,8 @@
 package config
 
 import (
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
-	"log"
 	"strings"
 )
 
@@ -28,12 +28,12 @@ func LoadConfig(path string) Config {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	err := viper.ReadInConfig()
 	if err != nil {
-		log.Fatal("Failed to load config: ", err)
+		log.Fatal().Err(err).Msg("Failed to load config")
 	}
 	var c Config
 	err = viper.Unmarshal(&c)
 	if err != nil {
-		log.Fatal("Failed to unmarshal config: ", err)
+		log.Fatal().Err(err).Msg("Failed to unmarshal config")
 	}
 	return c
 }
